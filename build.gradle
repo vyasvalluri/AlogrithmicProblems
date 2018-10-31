@@ -1,0 +1,55 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.9
+targetCompatibility = 1.9
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	testCompile 'junit:junit:4.+'
+	compile 'junit:junit:4.+'
+
+	testCompile "org.mockito:mockito-core:1.+"
+
+	// Google Guava lib
+	compile group: 'com.google.guava', name: 'guava', version: '22.0'
+
+	compile "com.google.truth:truth:0.36"
+
+}
+test {
+	dependsOn cleanTest
+	testLogging.showStandardStreams = true
+}
+
+String javaPackage = "src";
+String javatestsPackage = "tests"
+
+sourceSets {
+  main {
+    java {
+      srcDirs = [
+        javaPackage + '/recursion',
+        javaPackage + ''
+        
+      ]
+    }
+  }
+  test {
+    java {
+      srcDirs = [
+        javatestsPackage + '/recursion',
+        javatestsPackage + ' '
+        
+      ]
+    }
+  }
+}
+
+task buildDependenciesFolder(type: Copy) {
+	from configurations.compile
+	into './dependencies'
+}
