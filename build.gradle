@@ -25,14 +25,23 @@ test {
 	testLogging.showStandardStreams = true
 }
 
-String javaPackage = "src";
-String javatestsPackage = "tests"
+String javaPackage = "com.veda";
+String javatestsPackage = "tests.com.veda"
 
 sourceSets {
   main {
     java {
       srcDirs = [
+        javaPackage + '/coloringproblem',
+        javaPackage + '/euclidian',
+        javaPackage + '/hamiltonian',
+        javaPackage + '/kinghttour',
+        javaPackage + '/maze',
+        javaPackage + '/nqueens',
+        javaPackage + '/quickselect',
         javaPackage + '/recursion',
+        javaPackage + '/search',
+        javaPackage + '/sudoku',
         javaPackage + ''
         
       ]
